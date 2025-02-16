@@ -15,3 +15,10 @@ pinned: false
 - https://www.gradio.app/guides/agents-and-tool-usage
 
 - Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+
+
+### Example
+
+```
+How many baseballs are there?
+```
