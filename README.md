@@ -1,5 +1,5 @@
 ---
-title: Octotools
+title: OctoTools
 emoji: 💻
 colorFrom: yellow
 colorTo: purple
@@ -9,4 +9,9 @@ app_file: app.py
 pinned: false
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+
+### Reference
+
+- https://www.gradio.app/guides/agents-and-tool-usage
+
+- Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
