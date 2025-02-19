@@ -1,10 +1,11 @@
 ---
 title: OctoTools
-emoji: 🐙
+emoji: 🚀
 colorFrom: yellow
 colorTo: purple
 sdk: gradio
-sdk_version: 5.16.0
+sdk_version: 5.16.1
 app_file: app.py
-pinned: false
+pinned: true
+short_description: An Agentic Framework with tools for Complex Reasoning
 ---
