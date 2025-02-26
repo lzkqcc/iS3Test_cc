@@ -53,6 +53,7 @@ Instructions:
 4. Ensure all required parameters are included and properly formatted.
 5. Use appropriate values for parameters based on the given context, particularly the `Context` field which may contain relevant information from previous steps.
 6. If multiple steps are needed to prepare data for the tool, include them in the command construction.
+7. 请问中文回答
 
 Output Format:
 <analysis>: a step-by-step analysis of the context, sub-goal, and selected tool to guide the command construction.
