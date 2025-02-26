@@ -90,7 +90,7 @@ Your response should include:
 3. A list of relevant tools from the toolbox, with a brief explanation of how each tool would be utilized and its potential limitations.
 4. Any additional considerations that might be important for addressing the query effectively.
 
-Please present your analysis in a clear, structured format.
+Please present your analysis in a clear, structured format, use chinese.
 """
 
         input_data = [query_prompt]
