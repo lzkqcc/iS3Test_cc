@@ -53,11 +53,10 @@ Instructions:
 4. Ensure all required parameters are included and properly formatted.
 5. Use appropriate values for parameters based on the given context, particularly the `Context` field which may contain relevant information from previous steps.
 6. If multiple steps are needed to prepare data for the tool, include them in the command construction.
-7. 请问中文回答
 
 Output Format:
-<analysis>: a step-by-step analysis of the context, sub-goal, and selected tool to guide the command construction.
-<explanation>: a detailed explanation of the constructed command(s) and their parameters.
+<analysis>: a step-by-step analysis of the context, sub-goal, and selected tool to guide the command construction, use chinese.
+<explanation>: a detailed explanation of the constructed command(s) and their parameters , use chinese.
 <command>: the Python code to execute the tool, which can be one of the following types:
     a. A single line command with `execution = tool.execute()`.
     b. A multi-line command with complex data preparation, ending with `execution = tool.execute()`.
