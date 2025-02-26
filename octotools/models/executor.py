@@ -55,8 +55,8 @@ Instructions:
 6. If multiple steps are needed to prepare data for the tool, include them in the command construction.
 
 Output Format:
-<analysis>: a step-by-step analysis of the context, sub-goal, and selected tool to guide the command construction, use chinese.
-<explanation>: a detailed explanation of the constructed command(s) and their parameters , use chinese.
+<analysis>: a step-by-step analysis of the context, sub-goal, and selected tool to guide the command construction.
+<explanation>: a detailed explanation of the constructed command(s) and their parameters .
 <command>: the Python code to execute the tool, which can be one of the following types:
     a. A single line command with `execution = tool.execute()`.
     b. A multi-line command with complex data preparation, ending with `execution = tool.execute()`.
