@@ -24,26 +24,31 @@ from octotools.models.utils import make_json_serializable
 
 
 from pathlib import Path
-from huggingface_hub import CommitScheduler
+# from huggingface_hub import CommitScheduler
 
 # Get Huggingface token from environment variable
-HF_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+# HF_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
 ########### Test Huggingface Dataset ###########
 # Update the HuggingFace dataset constants
-DATASET_DIR = Path("solver_cache")  # the directory to save the dataset
-DATASET_DIR.mkdir(parents=True, exist_ok=True) 
+# DATASET_DIR = Path("solver_cache")  # the directory to save the dataset
+# DATASET_DIR.mkdir(parents=True, exist_ok=True) 
+
+# 本地数据存储路径（可自定义）
+LOCAL_DATASET_DIR = Path(os.path.expanduser("~/octotools_data")).joinpath("solver_cache")
+LOCAL_DATASET_DIR.mkdir(parents=True, exist_ok=True)
+DATASET_DIR = LOCAL_DATASET_DIR
 
 global QUERY_ID
 QUERY_ID = None
 
-scheduler = CommitScheduler(
-    repo_id="lupantech/OctoTools-Gradio-Demo-User-Data",
-    repo_type="dataset",
-    folder_path=DATASET_DIR,
-    path_in_repo="solver_cache",  # Update path in repo
-    token=HF_TOKEN
-)
+# scheduler = CommitScheduler(
+#     repo_id="lupantech/OctoTools-Gradio-Demo-User-Data",
+#     repo_type="dataset",
+#     folder_path=DATASET_DIR,
+#     path_in_repo="solver_cache",  # Update path in repo
+#     token=HF_TOKEN
+# )
 
 
 def save_query_data(query_id: str, query: str, image_path: str) -> None:
@@ -497,22 +502,22 @@ def main(args):
     # with gr.Blocks(theme=gr.themes.Soft()) as demo:
         # Theming https://www.gradio.app/guides/theming-guide
 
-        gr.Markdown("# 🐙 Chat with OctoTools: An Agentic Framework with Extensive Tools for Complex Reasoning")  # Title
-        # gr.Markdown("[![OctoTools](https://img.shields.io/badge/OctoTools-Agentic%20Framework%20for%20Complex%20Reasoning-blue)](https://octotools.github.io/)")  # Title
-        gr.Markdown("""
-        **OctoTools** is a training-free, user-friendly, and easily extensible open-source agentic framework designed to tackle complex reasoning across diverse domains. 
-        It introduces standardized **tool cards** to encapsulate tool functionality, a **planner** for both high-level and low-level planning, and an **executor** to carry out tool usage. 
+        # gr.Markdown("# 🐙 Chat with OctoTools: An Agentic Framework with Extensive Tools for Complex Reasoning")  # Title
+        # # gr.Markdown("[![OctoTools](https://img.shields.io/badge/OctoTools-Agentic%20Framework%20for%20Complex%20Reasoning-blue)](https://octotools.github.io/)")  # Title
+        # gr.Markdown("""
+        # **OctoTools** is a training-free, user-friendly, and easily extensible open-source agentic framework designed to tackle complex reasoning across diverse domains. 
+        # It introduces standardized **tool cards** to encapsulate tool functionality, a **planner** for both high-level and low-level planning, and an **executor** to carry out tool usage. 
                     
-        [Website](https://octotools.github.io/) | 
-        [Github](https://github.com/octotools/octotools) | 
-        [arXiv](https://arxiv.org/abs/2502.11271) | 
-        [Paper](https://arxiv.org/pdf/2502.11271) | 
-        [Daily Paper](https://huggingface.co/papers/2502.11271) | 
-        [Tool Cards](https://octotools.github.io/#tool-cards) | 
-        [Example Visualizations](https://octotools.github.io/#visualization) | 
-        [Coverage](https://x.com/lupantech/status/1892260474320015861) | 
-        [Discord](https://discord.gg/NMJx66DC)
-        """)
+        # [Website](https://octotools.github.io/) | 
+        # [Github](https://github.com/octotools/octotools) | 
+        # [arXiv](https://arxiv.org/abs/2502.11271) | 
+        # [Paper](https://arxiv.org/pdf/2502.11271) | 
+        # [Daily Paper](https://huggingface.co/papers/2502.11271) | 
+        # [Tool Cards](https://octotools.github.io/#tool-cards) | 
+        # [Example Visualizations](https://octotools.github.io/#visualization) | 
+        # [Coverage](https://x.com/lupantech/status/1892260474320015861) | 
+        # [Discord](https://discord.gg/NMJx66DC)
+        # """)
 
         with gr.Row():
             # Left column for settings
@@ -591,104 +596,104 @@ def main(args):
                     with gr.Column(scale=3):
                         chatbot_output = gr.Chatbot(type="messages", label="Step-wise Problem-Solving Output", height=500)
 
-                        # TODO: Add actions to the buttons
-                        with gr.Row(elem_id="buttons") as button_row:
-                            upvote_btn = gr.Button(value="👍  Upvote", interactive=True, variant="primary") # TODO
-                            downvote_btn = gr.Button(value="👎  Downvote", interactive=True, variant="primary") # TODO
-                            # stop_btn = gr.Button(value="⛔️  Stop", interactive=True) # TODO
-                            # clear_btn = gr.Button(value="🗑️  Clear history", interactive=True) # TODO
+                        # # TODO: Add actions to the buttons
+                        # with gr.Row(elem_id="buttons") as button_row:
+                        #     upvote_btn = gr.Button(value="👍  Upvote", interactive=True, variant="primary") # TODO
+                        #     downvote_btn = gr.Button(value="👎  Downvote", interactive=True, variant="primary") # TODO
+                        #     # stop_btn = gr.Button(value="⛔️  Stop", interactive=True) # TODO
+                        #     # clear_btn = gr.Button(value="🗑️  Clear history", interactive=True) # TODO
 
-                        # TODO: Add comment textbox
-                        with gr.Row():
-                            comment_textbox = gr.Textbox(value="", 
-                                                        placeholder="Feel free to add any comments here. Thanks for using OctoTools!",
-                                                        label="💬 Comment (Type and press Enter to submit.)", interactive=True) # TODO
+                        # # TODO: Add comment textbox
+                        # with gr.Row():
+                        #     comment_textbox = gr.Textbox(value="", 
+                        #                                 placeholder="Feel free to add any comments here. Thanks for using OctoTools!",
+                        #                                 label="💬 Comment (Type and press Enter to submit.)", interactive=True) # TODO
                             
-                        # Update the button click handlers
-                        upvote_btn.click(
-                            fn=lambda: save_feedback(QUERY_ID, "upvote"),
-                            inputs=[],
-                            outputs=[]
-                        )
+                        # # Update the button click handlers
+                        # upvote_btn.click(
+                        #     fn=lambda: save_feedback(QUERY_ID, "upvote"),
+                        #     inputs=[],
+                        #     outputs=[]
+                        # )
                         
-                        downvote_btn.click(
-                            fn=lambda: save_feedback(QUERY_ID, "downvote"),
-                            inputs=[],
-                            outputs=[]
-                        )
+                        # downvote_btn.click(
+                        #     fn=lambda: save_feedback(QUERY_ID, "downvote"),
+                        #     inputs=[],
+                        #     outputs=[]
+                        # )
 
-                        # Add handler for comment submission
-                        comment_textbox.submit(
-                            fn=lambda comment: save_feedback(QUERY_ID, "comment", comment),
-                            inputs=[comment_textbox],
-                            outputs=[]
-                        )
+                        # # Add handler for comment submission
+                        # comment_textbox.submit(
+                        #     fn=lambda comment: save_feedback(QUERY_ID, "comment", comment),
+                        #     inputs=[comment_textbox],
+                        #     outputs=[]
+                        # )
 
                 # Bottom row for examples
-                with gr.Row():
-                    with gr.Column(scale=5):
-                        gr.Markdown("")
-                        gr.Markdown("""
-                                    ## 💡 Try these examples with suggested tools.
-                                    """)
-                        gr.Examples(
-                            examples=[
-                                # [ None, "Who is the president of the United States?", ["Google_Search_Tool"]],
-                                [ "Logical Reasoning",
-                                 None,                             
-                                 "How many r letters are in the word strawberry?", 
-                                 ["Generalist_Solution_Generator_Tool", "Python_Code_Generator_Tool"], 
-                                 "3"],
+                # with gr.Row():
+                #     with gr.Column(scale=5):
+                #         gr.Markdown("")
+                #         gr.Markdown("""
+                #                     ## 💡 Try these examples with suggested tools.
+                #                     """)
+                #         gr.Examples(
+                #             examples=[
+                #                 # [ None, "Who is the president of the United States?", ["Google_Search_Tool"]],
+                #                 [ "Logical Reasoning",
+                #                  None,                             
+                #                  "How many r letters are in the word strawberry?", 
+                #                  ["Generalist_Solution_Generator_Tool", "Python_Code_Generator_Tool"], 
+                #                  "3"],
 
-                                [ "Web Search", 
-                                 None, 
-                                 "What's up with the upcoming Apple Launch? Any rumors?", 
-                                 ["Generalist_Solution_Generator_Tool", "Google_Search_Tool", "Wikipedia_Knowledge_Searcher_Tool", "URL_Text_Extractor_Tool"], 
-                                 "Apple's February 19, 2025, event may feature the iPhone SE 4, new iPads, accessories, and rumored iPhone 17 and Apple Watch Series 10."],
+                #                 [ "Web Search", 
+                #                  None, 
+                #                  "What's up with the upcoming Apple Launch? Any rumors?", 
+                #                  ["Generalist_Solution_Generator_Tool", "Google_Search_Tool", "Wikipedia_Knowledge_Searcher_Tool", "URL_Text_Extractor_Tool"], 
+                #                  "Apple's February 19, 2025, event may feature the iPhone SE 4, new iPads, accessories, and rumored iPhone 17 and Apple Watch Series 10."],
 
-                                [ "Arithmetic Reasoning", 
-                                 None, 
-                                 "Which is bigger, 9.11 or 9.9?", 
-                                 ["Generalist_Solution_Generator_Tool", "Python_Code_Generator_Tool"], 
-                                 "9.9"],
+                #                 [ "Arithmetic Reasoning", 
+                #                  None, 
+                #                  "Which is bigger, 9.11 or 9.9?", 
+                #                  ["Generalist_Solution_Generator_Tool", "Python_Code_Generator_Tool"], 
+                #                  "9.9"],
 
-                                [ "Multi-step Reasoning", 
-                                 None, 
-                                 "Using the numbers [1, 1, 6, 9], create an expression that equals 24. You must use basic arithmetic operations (+, -, ×, /) and parentheses. For example, one solution for [1, 2, 3, 4] is (1+2+3)×4.", ["Python_Code_Generator_Tool"], 
-                                 "((1 + 1) * 9) + 6"],
+                #                 [ "Multi-step Reasoning", 
+                #                  None, 
+                #                  "Using the numbers [1, 1, 6, 9], create an expression that equals 24. You must use basic arithmetic operations (+, -, ×, /) and parentheses. For example, one solution for [1, 2, 3, 4] is (1+2+3)×4.", ["Python_Code_Generator_Tool"], 
+                #                  "((1 + 1) * 9) + 6"],
 
-                                [ "Scientific Research",
-                                 None, 
-                                 "What are the research trends in tool agents with large language models for scientific discovery? Please consider the latest literature from ArXiv, PubMed, Nature, and news sources.", ["ArXiv_Paper_Searcher_Tool", "Pubmed_Search_Tool", "Nature_News_Fetcher_Tool"],
-                                 "Open-ended question. No reference answer."],
+                #                 [ "Scientific Research",
+                #                  None, 
+                #                  "What are the research trends in tool agents with large language models for scientific discovery? Please consider the latest literature from ArXiv, PubMed, Nature, and news sources.", ["ArXiv_Paper_Searcher_Tool", "Pubmed_Search_Tool", "Nature_News_Fetcher_Tool"],
+                #                  "Open-ended question. No reference answer."],
 
-                                [ "Visual Perception", 
-                                 "examples/baseball.png", 
-                                 "How many baseballs are there?", 
-                                 ["Object_Detector_Tool"], 
-                                 "20"],
+                #                 [ "Visual Perception", 
+                #                  "examples/baseball.png", 
+                #                  "How many baseballs are there?", 
+                #                  ["Object_Detector_Tool"], 
+                #                  "20"],
 
-                                [ "Visual Reasoning",  
-                                 "examples/rotting_kiwi.png", 
-                                 "You are given a 3 x 3 grid in which each cell can contain either no kiwi, one fresh kiwi, or one rotten kiwi. Every minute, any fresh kiwi that is 4-directionally adjacent to a rotten kiwi also becomes rotten. What is the minimum number of minutes that must elapse until no cell has a fresh kiwi?", ["Image_Captioner_Tool"], 
-                                 "4 minutes"],
+                #                 [ "Visual Reasoning",  
+                #                  "examples/rotting_kiwi.png", 
+                #                  "You are given a 3 x 3 grid in which each cell can contain either no kiwi, one fresh kiwi, or one rotten kiwi. Every minute, any fresh kiwi that is 4-directionally adjacent to a rotten kiwi also becomes rotten. What is the minimum number of minutes that must elapse until no cell has a fresh kiwi?", ["Image_Captioner_Tool"], 
+                #                  "4 minutes"],
 
-                                [ "Medical Image Analysis",
-                                 "examples/lung.jpg", 
-                                 "What is the organ on the left side of this image?", 
-                                 ["Image_Captioner_Tool", "Relevant_Patch_Zoomer_Tool"],
-                                 "Lung"],
+                #                 [ "Medical Image Analysis",
+                #                  "examples/lung.jpg", 
+                #                  "What is the organ on the left side of this image?", 
+                #                  ["Image_Captioner_Tool", "Relevant_Patch_Zoomer_Tool"],
+                #                  "Lung"],
 
-                                [ "Pathology Diagnosis",
-                                 "examples/pathology.jpg", 
-                                 "What are the cell types in this image?", 
-                                 ["Generalist_Solution_Generator_Tool", "Image_Captioner_Tool", "Relevant_Patch_Zoomer_Tool"],
-                                 "Need expert insights."],
+                #                 [ "Pathology Diagnosis",
+                #                  "examples/pathology.jpg", 
+                #                  "What are the cell types in this image?", 
+                #                  ["Generalist_Solution_Generator_Tool", "Image_Captioner_Tool", "Relevant_Patch_Zoomer_Tool"],
+                #                  "Need expert insights."],
 
-                            ],
-                            inputs=[gr.Textbox(label="Category", visible=False), user_image, user_query, enabled_tools, gr.Textbox(label="Reference Answer", visible=False)],
-                            # label="Try these examples with suggested tools."
-                        )
+                #             ],
+                #             inputs=[gr.Textbox(label="Category", visible=False), user_image, user_query, enabled_tools, gr.Textbox(label="Reference Answer", visible=False)],
+                #             # label="Try these examples with suggested tools."
+                #         )
 
         # Link button click to function
         run_button.click(

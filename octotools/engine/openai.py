@@ -65,9 +65,17 @@ class ChatOpenAI(EngineLM, CachedEngine):
         if api_key is None:
             raise ValueError("Please set the OPENAI_API_KEY environment variable if you'd like to use OpenAI models.")
         
-        self.client = OpenAI(
-            api_key=api_key,
-        )
+        openai.api_key = "fd94d3752cf14fc4a22713c58e600c2c"
+        openai.base_url = "https://tongji2024.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-08-01-preview"
+        openai.api_type = "azure"
+        openai.api_version = "2024-02-01"
+
+        self.client = openai
+
+        # self.client = OpenAI(
+        #     api_key=api_key,
+        # )
+        
         self.model_string = model_string
         self.is_multimodal = is_multimodal
         self.enable_cache = enable_cache
