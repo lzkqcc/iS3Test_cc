@@ -542,9 +542,9 @@ def main(args):
 
                 with gr.Row():
                     llm_model_engine = gr.Dropdown(
-                        choices=["gpt-4o", "gpt-4o-2024-11-20", "gpt-4o-2024-08-06", "gpt-4o-2024-05-13",
+                        choices=["deepseek","gpt-4o", "gpt-4o-2024-11-20", "gpt-4o-2024-08-06", "gpt-4o-2024-05-13",
                                 "gpt-4o-mini", "gpt-4o-mini-2024-07-18"], 
-                        value="gpt-4o", 
+                        value="deepseek", 
                         label="LLM Model"
                     )
                 with gr.Row():
