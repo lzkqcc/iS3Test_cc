@@ -227,7 +227,7 @@ class Solver:
         json_data = {"query": user_query, "image": "Image received as bytes"}
 
         messages.append(ChatMessage(role="assistant", content="<br>"))
-        messages.append(ChatMessage(role="assistant", content="### 🐙 Reasoning Steps from iS3 (Deep Thinking...)"))
+        messages.append(ChatMessage(role="assistant", content="###  Reasoning Steps from iS3 (Deep Thinking...)"))
         yield messages
 
         # [Step 4] Query Analysis
@@ -381,7 +381,7 @@ class Solver:
         # Step 8: Completion Message
         messages.append(ChatMessage(role="assistant", content="<br>"))
         messages.append(ChatMessage(role="assistant", content="### ✅ Query Solved!"))
-        messages.append(ChatMessage(role="assistant", content="How do you like the output from OctoTools 🐙? Please give us your feedback below. \n\n👍 If the answer is correct or the reasoning steps are helpful, please upvote the output. \n👎 If it is incorrect or the reasoning steps are not helpful, please downvote the output. \n💬 If you have any suggestions or comments, please leave them below.\n\nThank you for using OctoTools! 🐙"))
+        messages.append(ChatMessage(role="assistant", content="How do you like the output from iS3 ? Please give us your feedback below. \n\n👍 If the answer is correct or the reasoning steps are helpful, please upvote the output. \n👎 If it is incorrect or the reasoning steps are not helpful, please downvote the output. \n💬 If you have any suggestions or comments, please leave them below.\n\nThank you for using OctoTools! 🐙"))
         yield messages
         
 
