@@ -444,13 +444,16 @@ def solve_problem_gradio(user_query, user_image, max_steps=10, max_time=60, api_
     # Instantiate Initializer
     initializer = Initializer(
         enabled_tools=enabled_tools,
-        model_string=llm_model_engine,
+        
+        #model_string=llm_model_engine,
+        model_string="gpt-4o",
         api_key=api_key
     )
 
     # Instantiate Planner
     planner = Planner(
-        llm_engine_name=llm_model_engine,
+        llm_engine_name="gpt-4o",
+        #llm_engine_name=llm_model_engine,
         toolbox_metadata=initializer.toolbox_metadata,
         available_tools=initializer.available_tools,
         api_key=api_key
@@ -461,7 +464,8 @@ def solve_problem_gradio(user_query, user_image, max_steps=10, max_time=60, api_
 
     # Instantiate Executor
     executor = Executor(
-        llm_engine_name=llm_model_engine,
+        #llm_engine_name=llm_model_engine,
+        llm_engine_name="gpt-4o",
         query_cache_dir=query_cache_dir, # NOTE
         enable_signal=False,
         api_key=api_key
@@ -542,8 +546,7 @@ def main(args):
 
                 with gr.Row():
                     # todo 
-                    llm_model_engine ="gpt-4o"
-                    aa = gr.Dropdown(
+                    llm_model_engine =gr.Dropdown(
                         choices=["deepseek","gpt-4o", "gpt-4o-2024-11-20", "gpt-4o-2024-08-06", "gpt-4o-2024-05-13",
                                 "gpt-4o-mini", "gpt-4o-mini-2024-07-18"], 
                         value="deepseek", 
