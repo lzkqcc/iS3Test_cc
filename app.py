@@ -227,7 +227,7 @@ class Solver:
         json_data = {"query": user_query, "image": "Image received as bytes"}
 
         messages.append(ChatMessage(role="assistant", content="<br>"))
-        messages.append(ChatMessage(role="assistant", content="### 🐙 Reasoning Steps from OctoTools (Deep Thinking...)"))
+        messages.append(ChatMessage(role="assistant", content="### 🐙 Reasoning Steps from iS3 (Deep Thinking...)"))
         yield messages
 
         # [Step 4] Query Analysis
